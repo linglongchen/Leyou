@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="659feaca-ef35-4357-8663-21bac30136a9" name="Default Changelist" comment="" />
+    <list default="true" id="659feaca-ef35-4357-8663-21bac30136a9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-interface/src/main/java/com/leyou/item/bo/SpuBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-interface/src/main/java/com/leyou/item/bo/SpuBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-interface/src/main/java/com/leyou/item/pojo/SpuDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-interface/src/main/java/com/leyou/item/pojo/SpuDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-interface/target/classes/com/leyou/item/bo/SpuBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-interface/target/classes/com/leyou/item/bo/SpuBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-interface/target/classes/com/leyou/item/pojo/SpuDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-interface/target/classes/com/leyou/item/pojo/SpuDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-service/src/main/java/com/leyou/item/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-service/src/main/java/com/leyou/item/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-service/src/main/java/com/leyou/item/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-service/src/main/java/com/leyou/item/service/GoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-service/target/classes/com/leyou/item/controller/GoodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-service/target/classes/com/leyou/item/controller/GoodsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-service/target/classes/com/leyou/item/service/GoodsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-service/target/classes/com/leyou/item/service/GoodsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-service/target/classes/com/leyou/item/service/SpecificationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-service/target/classes/com/leyou/item/service/SpecificationService.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,10 +37,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -43,6 +59,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1XHOAkQu8zb9Ogq9GJos0k3DB25" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -54,6 +73,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
@@ -150,6 +170,7 @@
       <workItem from="1580998414154" duration="4605000" />
       <workItem from="1581298146842" duration="9745000" />
       <workItem from="1581383627225" duration="9934000" />
+      <workItem from="1581416687472" duration="9754000" />
     </task>
     <servers />
   </component>
@@ -157,10 +178,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="184" key="#Inspections" timestamp="1580702653919">
+    <state x="552" y="184" key="#Inspections" timestamp="1581419763081">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="184" key="#Inspections/0.0.1920.1050@0.0.1920.1050" timestamp="1580702653919" />
+    <state x="552" y="184" key="#Inspections/0.0.1920.1050@0.0.1920.1050" timestamp="1581419763081" />
     <state x="552" y="184" key="#Project_Structure" timestamp="1580720256201">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -181,54 +202,54 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1581389947428" />
-    <state width="1877" height="573" key="GridCell.Tab.0.bottom" timestamp="1581400826871">
+    <state width="1877" height="214" key="GridCell.Tab.0.bottom" timestamp="1581432139989">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826871" />
-    <state width="1877" height="573" key="GridCell.Tab.0.center" timestamp="1581400826871">
+    <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1581432139989" />
+    <state width="1877" height="214" key="GridCell.Tab.0.center" timestamp="1581432139989">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826871" />
-    <state width="1877" height="573" key="GridCell.Tab.0.left" timestamp="1581400826871">
+    <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1581432139989" />
+    <state width="1877" height="214" key="GridCell.Tab.0.left" timestamp="1581432139989">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826871" />
-    <state width="1877" height="573" key="GridCell.Tab.0.right" timestamp="1581400826871">
+    <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1581432139989" />
+    <state width="1877" height="214" key="GridCell.Tab.0.right" timestamp="1581432139989">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826871" />
-    <state width="1877" height="573" key="GridCell.Tab.1.bottom" timestamp="1581400826881">
+    <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1581432139989" />
+    <state width="1877" height="214" key="GridCell.Tab.1.bottom" timestamp="1581432082084">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826881" />
-    <state width="1877" height="573" key="GridCell.Tab.1.center" timestamp="1581400826881">
+    <state width="1877" height="214" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1581432082084" />
+    <state width="1877" height="214" key="GridCell.Tab.1.center" timestamp="1581432082084">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826881" />
-    <state width="1877" height="573" key="GridCell.Tab.1.left" timestamp="1581400826871">
+    <state width="1877" height="214" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1581432082084" />
+    <state width="1877" height="214" key="GridCell.Tab.1.left" timestamp="1581432082084">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826871" />
-    <state width="1877" height="573" key="GridCell.Tab.1.right" timestamp="1581400826881">
+    <state width="1877" height="214" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1581432082084" />
+    <state width="1877" height="214" key="GridCell.Tab.1.right" timestamp="1581432082084">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826881" />
-    <state width="1877" height="573" key="GridCell.Tab.2.bottom" timestamp="1581400826881">
+    <state width="1877" height="214" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1581432082084" />
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom" timestamp="1581431491920">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826881" />
-    <state width="1877" height="573" key="GridCell.Tab.2.center" timestamp="1581400826881">
+    <state width="1877" height="374" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1581431491920" />
+    <state width="1877" height="374" key="GridCell.Tab.2.center" timestamp="1581431491920">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826881" />
-    <state width="1877" height="573" key="GridCell.Tab.2.left" timestamp="1581400826881">
+    <state width="1877" height="374" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1581431491920" />
+    <state width="1877" height="374" key="GridCell.Tab.2.left" timestamp="1581431491920">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826881" />
-    <state width="1877" height="573" key="GridCell.Tab.2.right" timestamp="1581400826881">
+    <state width="1877" height="374" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1581431491920" />
+    <state width="1877" height="374" key="GridCell.Tab.2.right" timestamp="1581431491920">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="573" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1581400826881" />
+    <state width="1877" height="374" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1581431491920" />
     <state x="461" y="167" key="SettingsEditor" timestamp="1580828964147">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
