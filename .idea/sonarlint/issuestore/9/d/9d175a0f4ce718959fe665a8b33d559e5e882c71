@@ -1,0 +1,5 @@
+
+Ssquid:S1191"5Use classes from the Java API instead of Sun classes.(‚º8Ü’€ÿ€.
+ysquid:UselessImportCheck"NRemove this unused import 'com.sun.org.apache.xpath.internal.operations.Mult'.(‚º8Ü’€ÿ€.
+Fsquid:S1148&"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ü’€ÿ€.
+rsquid:UselessImportCheck"BRemove this unused import 'com.netflix.discovery.util.StringUtil'.(†–š¶şÿÿÿÿ8Ü’€ÿ€.
