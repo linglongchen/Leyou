@@ -85,4 +85,13 @@ public class BrandService {
     public List<Brand> queryBrandByCid(Long cid){
         return  this.brandMapper.selectBrandByCid(cid);
     }
+
+    /**
+     * 根据分类id查询brand
+     * @param id
+     * @return
+     */
+    public Brand queryBrandById(Long id){
+        return this.brandMapper.selectByPrimaryKey(id);
+    }
 }

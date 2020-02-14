@@ -1,3 +1,4 @@
 
-rsquid:S32522"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(ÓüõØûÿÿÿÿ8ÌâÀƒ.
-qsquid:UselessImportCheck"ARemove this unused import 'com.leyou.item.mapper.CategoryMapper'.(šîŒùıÿÿÿÿ8Èúìƒ.
+Fsquid:S1148Q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Öë¿œ„.
+rsquid:S32527"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(ÓüõØûÿÿÿÿ8•ï×Ÿƒ.
+Psquid:S1602",Remove useless curly braces around statement(ÇÎ£®şÿÿÿÿ8˜¾’¥ƒ.

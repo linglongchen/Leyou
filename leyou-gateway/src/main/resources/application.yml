@@ -17,6 +17,7 @@ zuul:
   retryable: true
   routes:
     item-service: /item/**
+    search-service: /search/**
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)
   ReadTimeout: 2000 # 通信超时时间(ms)

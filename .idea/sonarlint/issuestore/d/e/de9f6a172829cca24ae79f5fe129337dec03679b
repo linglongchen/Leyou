@@ -1,0 +1,11 @@
+
+squid:UselessImportCheck"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅşÿÿÿÿ8è¤ù¼ƒ.
+hsquid:UselessImportCheck"=Remove this unused import 'com.leyou.common.pojo.PageResult'.(İÀÓ¤8è¤ù¼ƒ.
+dsquid:UselessImportCheck"4Remove this unused import 'com.leyou.item.bo.SpuBo'.(‰–ÛŞûÿÿÿÿ8è¤ù¼ƒ.
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8è¤ù¼ƒ.
+tsquid:UselessImportCheck	"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8è¤ù¼ƒ.
+zsquid:UselessImportCheck
+"ORemove this unused import 'org.springframework.web.bind.annotation.GetMapping'.(‡¡‰Ø8è¤ù¼ƒ.
+_squid:UselessImportCheck"4Remove this unused import 'com.leyou.item.pojo.Sku'.(§ÎªÆ8è¤ù¼ƒ.
+squid:UselessImportCheck"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ8è¤ù¼ƒ.
+jsquid:UselessImportCheck":Remove this unused import 'com.leyou.item.pojo.SpuDetail'.(ü”êêûÿÿÿÿ8è¤ù¼ƒ.

@@ -1,3 +1,4 @@
 
 [squid:UselessImportCheck"2Remove this unused import 'java.util.Collections'.(¢³ïÓþÿÿÿÿ
 osquid:UselessImportCheck"FRemove this unused import 'org.springframework.stereotype.Controller'.(øŠ—Öùÿÿÿÿ
+asquid:S1155E">Use isEmpty() to check whether the collection is empty or not.(ˆòÓ€ÿÿÿÿÿ8õÝÑ¼ƒ.

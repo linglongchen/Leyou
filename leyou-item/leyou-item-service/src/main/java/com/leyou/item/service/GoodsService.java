@@ -7,6 +7,7 @@ import com.leyou.item.bo.SpuBo;
 import com.leyou.item.mapper.*;
 import com.leyou.item.pojo.*;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,8 @@ public class GoodsService {
     private SkuMapper skuMapper;
     @Autowired
     private StockMapper stockMapper;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
 
     public PageResult<SpuBo> querySpuByPage(String key, Boolean saleable, Integer page, Integer rows) {
@@ -71,6 +74,15 @@ public class GoodsService {
     }
 
 
+    public void  sendMsg(String type,Long id){
+        try {
+            this.amqpTemplate.convertAndSend("item"+type,id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * 新增商品
      *
@@ -90,6 +102,8 @@ public class GoodsService {
         spuDetail.setSpuId(spuBo.getId());
         this.spuDetailMapper.insertSelective(spuDetail);
         saveSkuAndStock(spuBo);
+        sendMsg("insert",spuBo.getId());
+
     }
 
     /**
@@ -140,6 +154,7 @@ public class GoodsService {
         spuBo.setValid(null);
         this.spuMapper.updateByPrimaryKeySelective(spuBo);
         this.spuDetailMapper.updateByPrimaryKeySelective(spuBo.getSpuDetail());
+        sendMsg("update",spuBo.getId());
     }
 
 
@@ -168,5 +183,9 @@ public class GoodsService {
             sku1.setStock(stock.getStock());
         });
         return skus;
+    }
+
+    public Spu querySpuById(Long id){
+        return this.spuMapper.selectByPrimaryKey(id);
     }
 }
