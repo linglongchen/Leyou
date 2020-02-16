@@ -103,7 +103,6 @@ public class GoodsService {
         this.spuDetailMapper.insertSelective(spuDetail);
         saveSkuAndStock(spuBo);
         sendMsg("insert",spuBo.getId());
-
     }
 
     /**
@@ -185,6 +184,11 @@ public class GoodsService {
         return skus;
     }
 
+    /**
+     * 根据id查询spu
+     * @param id
+     * @return
+     */
     public Spu querySpuById(Long id){
         return this.spuMapper.selectByPrimaryKey(id);
     }

@@ -1,0 +1,5 @@
+
+hsquid:S1192'"LDefine a constant instead of duplicating this literal "cn-hangzhou" 3 times.(ÓØÍ¡øÿÿÿÿ
+wsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ñš·³şÿÿÿÿ
+wsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(áòëøşÿÿÿÿ
+bsquid:CommentedOutCodeLine9"<This block of commented-out lines of code should be removed.(£õî”

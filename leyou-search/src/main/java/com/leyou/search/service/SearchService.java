@@ -124,4 +124,14 @@ public class SearchService {
         }
         return result;
     }
+
+
+    /**
+     * 更新
+     * @param id
+     */
+//    public void save(Long id){
+//        this.buildGoods(spu);
+//        this.goodsClient.
+//    }
 }
