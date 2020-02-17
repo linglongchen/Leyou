@@ -23,5 +23,6 @@
     </orderEntry>
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.20" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:5.0.10.RELEASE" level="project" />
   </component>
 </module>

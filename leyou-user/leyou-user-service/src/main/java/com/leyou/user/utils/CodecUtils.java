@@ -7,7 +7,6 @@ import java.util.UUID;
 
 /**
  * 密码中生成盐的方法
- * @author Administrator
  */
 public class CodecUtils {
 

@@ -1,8 +1,8 @@
 
 usquid:S3776&"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(£ÎÁ¾ýÿÿÿÿ8…ƒ’½ƒ.
 Hsquid:S5411L"*Use the primitive boolean expression here.(ŽÅ«æ8”´’½ƒ.
+osquid:CommentedOutCodeLineˆ"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8„Îœà„.
+osquid:CommentedOutCodeLine…"<This block of commented-out lines of code should be removed.(¬¦ÁÐþÿÿÿÿ8„Îœà„.
+Msquid:S5411I"*Use the primitive boolean expression here.(õ•‰‘ÿÿÿÿÿ8”´’½ƒ.
 Hsquid:S5411J"*Use the primitive boolean expression here.(Ö×™­8”´’½ƒ.
 Msquid:S1481D"/Remove this unused "searchSpec" local variable.(ÂÐÕ8…ƒ’½ƒ.
-Msquid:S5411I"*Use the primitive boolean expression here.(õ•‰‘ÿÿÿÿÿ8”´’½ƒ.
-osquid:CommentedOutCodeLine…"<This block of commented-out lines of code should be removed.(¬¦ÁÐþÿÿÿÿ8„Îœà„.
-osquid:CommentedOutCodeLineˆ"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8„Îœà„.

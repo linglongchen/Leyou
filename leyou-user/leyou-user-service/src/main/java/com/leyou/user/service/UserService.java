@@ -4,11 +4,11 @@ import com.leyou.common.utils.NumberUtils;
 import com.leyou.user.mapper.UserMapper;
 import com.leyou.user.pojo.User;
 import com.leyou.user.utils.CodecUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.AmqpTemplate;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,112 +18,132 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Administrator
- */
+ * @create: 2019-07-18 23:03
+ **/
 @Service
 public class UserService {
 
     @Autowired
     private UserMapper userMapper;
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-
 
     @Autowired
-    private AmqpTemplate amqpTemplate;
+    private RabbitTemplate rabbitTemplate;
 
-    static final String KEY_PREFIX = "user:code:phone:";
+    @Autowired
+    private StringRedisTemplate redisTemplate;
 
-    static final Logger logger = LoggerFactory.getLogger(UserService.class);
-
-    public Boolean sendVerifyCode(String phone) {
-        // 生成验证码
-        String code = NumberUtils.generateCode(6);
-        try {
-            // 发送短信
-            Map<String, String> msg = new HashMap<>();
-            msg.put("phone", phone);
-            msg.put("code", code);
-            this.amqpTemplate.convertAndSend("ly.sms.exchange", "sms.verify.code", msg);
-            // 将code存入redis
-            this.redisTemplate.opsForValue().set(KEY_PREFIX + phone, code, 5, TimeUnit.MINUTES);
-            return true;
-        } catch (Exception e) {
-            logger.error("发送短信失败。phone：{}， code：{}", phone, code);
-            return false;
-        }
-    }
     /**
-     * 校验数据是否可用
+     * 手机验证码保存到redis中的前缀
+     */
+    private static final String key_prefix = "USER:VERIFY:";
+
+    /**
+     * 验证参数是否可用
+     *
      * @param data
      * @param type
      * @return
      */
-    public Boolean checkData(String data, Integer type) {
+    public Boolean checkUser(String data, Integer type) {
         User record = new User();
-        switch (type) {
-            case 1:
-                record.setUsername(data);
-                break;
-            case 2:
-                record.setPhone(data);
-                break;
-            default:
-                return null;
+        if (type == 1) {
+            //为1时验证用户名
+            record.setUsername(data);
+        } else if (type == 2) {
+            //为2时验证手机
+            record.setPhone(data);
+        } else {
+            return null;
         }
+
         return this.userMapper.selectCount(record) == 0;
     }
 
-    public Boolean register(User user, String code) {
-        String key = KEY_PREFIX + user.getPhone();
-        // 从redis取出验证码
-        String codeCache = (String) this.redisTemplate.opsForValue().get(key);
-        // 检查验证码是否正确
-        if (!code.equals(codeCache)) {
-            // 不正确，返回
-            return false;
+    /**
+     * 获取验证码
+     *
+     * @param phone
+     * @return
+     */
+    public void sendVerifyCode(String phone) {
+        if (StringUtils.isEmpty(phone)) {
+            return;
         }
-        user.setId(null);
-        user.setCreated(new Date());
-        // 生成盐
-        String salt = CodecUtils.generateSalt();
-        user.setSalt(salt);
-        // 对密码进行加密
-        user.setPassword(CodecUtils.md5Hex(user.getPassword(), salt));
-        // 写入数据库
-        boolean boo = this.userMapper.insertSelective(user) == 1;
 
-        // 如果注册成功，删除redis中的code
-        if (boo) {
-            try {
-                this.redisTemplate.delete(key);
-            } catch (Exception e) {
-                logger.error("删除缓存验证码失败，code：{}", code, e);
-            }
+        //生成验证码
+        String code = NumberUtils.generateCode(6);
+
+        //发送消息到rabbitMQ
+        Map<String, String> msg = new HashMap<>();
+        msg.put("phone", phone);
+        msg.put("code", code);
+        try {
+            rabbitTemplate.convertAndSend("LEYOU.SMS.EXCHANGE", "verifycode_sms", msg);
+        } catch (AmqpException e) {
+            e.printStackTrace();
         }
-        return boo;
+
+        //把验证码保存到redis,过期时间为5分钟
+        redisTemplate.opsForValue().set(key_prefix + phone, code, 5, TimeUnit.MINUTES);
     }
 
     /**
-     * 用户登陆
+     * 用户注册；
+     * 在使用springboot的stringredistemplate来操作redis时，同样也需要作try-catch处理。
+     * 不能影响主业务的进行
+     *
+     * @param user
+     * @param code
+     * @return
+     */
+    public void register(User user, String code) {
+        //校验验证码
+        //从redis中获取验证码
+        String redisCode = redisTemplate.opsForValue().get(key_prefix + user.getPhone());
+        if (!org.apache.commons.lang3.StringUtils.equals(code, redisCode)) {
+            return;
+        }
+
+        //生成盐
+        String salt = CodecUtils.generateSalt();
+        user.setSalt(salt);
+
+        //加盐加密
+        user.setPassword(CodecUtils.md5Hex(user.getPassword(), salt));
+
+        //新增用户
+        user.setId(null);
+        user.setCreated(new Date());
+        userMapper.insertSelective(user);
+
+        //删除redis中的验证码
+        redisTemplate.delete(key_prefix + user.getPhone());
+
+    }
+
+    /**
+     * 用户登录
+     *
      * @param username
      * @param password
      * @return
      */
-    public User queryUser(String username, String password) {
-        // 查询
-        User record = new User();
-        record.setUsername(username);
-        User user = this.userMapper.selectOne(record);
-        // 校验用户名
+    public User query(String username, String password) {
+        //根据用户名查询到用户
+        User user = new User();
+        user.setUsername(username);
+        user = this.userMapper.selectOne(user);
+
+        //是否存在判断
         if (user == null) {
             return null;
         }
-        // 校验密码
-        if (!user.getPassword().equals(CodecUtils.md5Hex(password, user.getSalt()))) {
+        //使用用户内的盐加请求的密码进行加密处理，再与数据库内的密码进行判断
+        String md5Hex = CodecUtils.md5Hex(password, user.getSalt());
+        if (!org.apache.commons.lang3.StringUtils.equals(user.getPassword(), md5Hex)) {
             return null;
         }
-        // 用户名密码都正确
+
         return user;
     }
 }

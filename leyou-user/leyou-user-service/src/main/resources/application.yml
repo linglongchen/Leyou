@@ -4,14 +4,14 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/leyou
+    url: jdbc:mysql://127.0.0.1:3306/heima?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
-    host: 192.168.56.101
+    host: localhost
   rabbitmq:
-    host: 192.168.56.101
+    host: localhost
     username: leyou
     password: leyou
     virtual-host: /leyou
@@ -38,6 +38,10 @@ mybatis:
   mapper-locations: mapping/**Dao.xml
   configuration:
     map-underscore-to-camel-case: true
+
+ribbon:
+  eureka:
+    enabled: true
 
 logging:
   level:

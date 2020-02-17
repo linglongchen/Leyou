@@ -11,21 +11,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Map;
 
 /**
- * @author Administrator
- */
+ * 商品详情页请求处理
+ *
+ * @create: 2019-07-17 20:10
+ **/
 @Controller
 public class GoodsController {
 
     @Autowired
     private GoodsService goodsService;
+
     @Autowired
     private GoodsHtmlService goodsHtmlService;
 
-    @GetMapping("item/{id}.html")
-    public String toItemPage(@PathVariable("id")Long id, Model model){
-        Map<String, Object> map = this.goodsService.loadData(id);
-        model.addAllAttributes(map);
-        this.goodsHtmlService.createHtml(id);
+    /**
+     * 根据spuId来获取商品相关的参数，并封装到页面
+     *
+     * @param sid
+     * @param model
+     * @return
+     */
+    @GetMapping("item/{sid}.html")
+    public String toItemPage(@PathVariable("sid") Long sid, Model model) {
+        Map<String, Object> data = goodsService.loadData(sid);
+
+        model.addAllAttributes(data);
+
+        this.goodsHtmlService.createHtml(sid);
+
         return "item";
     }
+
 }

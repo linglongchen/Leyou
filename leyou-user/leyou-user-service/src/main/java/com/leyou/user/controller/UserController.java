@@ -12,74 +12,73 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
- * @author Administrator
- */
+ * @create: 2019-07-18 23:05
+ **/
 @Controller
 public class UserController {
-
 
     @Autowired
     private UserService userService;
 
     /**
-     * 校验数据是否可用
+     * 验证参数是否可用
+     *
      * @param data
      * @param type
      * @return
      */
-    @GetMapping("check/{data}/{type}")
+    @GetMapping("/check/{data}/{type}")
     public ResponseEntity<Boolean> checkUser(@PathVariable("data") String data, @PathVariable("type") Integer type) {
-        Boolean boo = this.userService.checkData(data, type);
-        if (boo == null) {
-            return ResponseEntity.notFound().build();
+        Boolean bool = this.userService.checkUser(data, type);
+        if (bool == null) {
+            return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(boo);
+        return ResponseEntity.ok(bool);
     }
 
     /**
-     * 注册
+     * 获取验证码
+     *
+     * @param phone
+     * @return
+     */
+    @PostMapping("code")
+    public ResponseEntity<Void> sendVerifyCode(@RequestParam("phone") String phone) {
+        this.userService.sendVerifyCode(phone);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    /**
+     * 用户注册
+     * 注解@Valid与hibernate-validator依赖相关联，声明在这里表示在这里进行校验。
+     * 在参数请求的时候
+     *
      * @param user
      * @param code
      * @return
      */
     @PostMapping("register")
     public ResponseEntity<Void> register(@Valid User user, @RequestParam("code") String code) {
-        Boolean boo = this.userService.register(user, code);
-        if (boo == null || !boo) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-    /**
-     * 发送手机验证码
-     * @param phone
-     * @return
-     */
-    @PostMapping("code")
-    public ResponseEntity<Void> sendVerifyCode(String phone) {
-        Boolean boo = this.userService.sendVerifyCode(phone);
-        if (boo == null || !boo) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        this.userService.register(user, code);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     /**
-     * 根据用户名和密码查询用户
+     * 用户登录
+     *
      * @param username
      * @param password
      * @return
      */
     @GetMapping("query")
-    public ResponseEntity<User> queryUser(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password
-    ) {
-        User user = this.userService.queryUser(username, password);
+    public ResponseEntity<User> query(@RequestParam("username") String username, @RequestParam("password") String password) {
+        User user = this.userService.query(username, password);
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(user);
     }

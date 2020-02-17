@@ -1,7 +1,5 @@
 package com.leyou.goods.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
@@ -11,57 +9,51 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.Map;
 
+/**
+ * @create: 2019-07-18 02:22
+ **/
 @Service
 public class GoodsHtmlService {
-    @Autowired
-    private GoodsService goodsService;
 
     @Autowired
     private TemplateEngine templateEngine;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(GoodsHtmlService.class);
+    @Autowired
+    private GoodsService goodsService;
 
     /**
-     * 创建html页面
+     * 使用thymeleaf来创建静态html页面
      *
      * @param spuId
-     * @throws Exception
      */
     public void createHtml(Long spuId) {
+        //静态化后页面的保存地址
+        File file = new File("F:\\nginx\\nginx-1.14.2\\html\\item\\" + spuId + ".html");
 
-        PrintWriter writer = null;
-        try {
-            // 获取页面数据
-            Map<String, Object> spuMap = this.goodsService.loadData(spuId);
-            // 创建thymeleaf上下文对象
+        //创建输出流
+        try (PrintWriter printWriter = new PrintWriter(file)) {
+            //获取页面数据
+            Map<String, Object> data = goodsService.loadData(spuId);
+
+            //创建thymeleaf上下文对象
             Context context = new Context();
-            // 把数据放入上下文对象
-            context.setVariables(spuMap);
-            // 创建输出流
-            File file = new File("E:\\nginx-1.14.2\\html\\item\\" + spuId + ".html");
-            writer = new PrintWriter(file);
-            // 执行页面静态化方法
-            templateEngine.process("item", context, writer);
+            //把数据放入上下文对象
+            context.setVariables(data);
+
+            //执行页面静态化方法
+            templateEngine.process("item", context, printWriter);
         } catch (Exception e) {
-            LOGGER.error("页面静态化出错：{}，"+ e, spuId);
-        } finally {
-            if (writer != null) {
-                writer.close();
-            }
+            e.printStackTrace();
         }
     }
 
-//    /**
-//     * 新建线程处理页面静态化
-//     * @param spuId
-//     */
-//    public void asyncExcute(Long spuId) {
-//        ThreadUtils.execute(()->createHtml(spuId));
-//        /*ThreadUtils.execute(new Runnable() {
-//            @Override
-//            public void run() {
-//                createHtml(spuId);
-//            }
-//        });*/
-//    }
+    /**
+     * 删除生成的静态页面
+     *
+     * @param id
+     */
+    public void deleteHtml(Long id) {
+        File file = new File("F:\\nginx\\nginx-1.14.2\\html\\item\\" + id + ".html");
+        file.deleteOnExit();
+    }
 }

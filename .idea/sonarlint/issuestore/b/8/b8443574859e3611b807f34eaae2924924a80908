@@ -1,2 +1,4 @@
 
-Ksquid:S2447H"-Null is returned but a "Boolean" is expected.(¥¹ï8¯¶½á„.
+~squid:S00115&"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(µÅ‡üıÿÿÿÿ8æé®‰….
+Fsquid:S1148S"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8æé®‰….
+Ksquid:S24478"-Null is returned but a "Boolean" is expected.(¥¹ï8¯¶½á„.
