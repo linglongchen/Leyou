@@ -8,7 +8,6 @@ spring:
     username: root
     password: 123456
     name: druidDataSource
-    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
   rabbitmq:
     host: localhost

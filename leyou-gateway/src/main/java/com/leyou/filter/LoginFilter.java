@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class LoginFilter extends ZuulFilter {
 
     @Autowired
     private FilterProperties filterProperties;
+    @Resource
+    private JwtUtils jwtUtils;
 
 
     @Override
@@ -88,11 +91,15 @@ public class LoginFilter extends ZuulFilter {
             //给浏览器响应
             context.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
         }*/
+        if (request.getRequestURI().contains("v2/api-docs")) {
+            return null;
+        }
+
 
         //校验
         try {
             //校验通过什么都不做，即放行
-            JwtUtils.getInfoFromToken(token, jwtProperties.getPublicKey());
+            jwtUtils.getTokenClaim(token);
         } catch (Exception e) {
             e.printStackTrace();
             //zuul网关不进行转发请求

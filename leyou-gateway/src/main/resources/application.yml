@@ -3,6 +3,18 @@ server:
 spring:
   application:
     name: api-gateway
+  # redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    timeout: 2000
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
 eureka:
   client:
     service-url:
@@ -20,6 +32,7 @@ zuul:
     search-service: /search/** #搜索微服务
     user-service: /user/** #用户微服务
     auth-service: /auth/** # 授权中心微服务
+    api-service: /service/**
   add-host-header: true
   sensitive-headers: #覆盖默认敏感头信息
 ribbon:
@@ -37,7 +50,7 @@ hystrix:
             timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
 leyou:
   jwt:
-    pubKeyPath:  C:\Users\Administrator\Desktop\jwt\\rsa.pub # 公钥地址
+    pubKeyPath: C:\Users\v_vllchen\Desktop\rsa.pub # 公钥地址
     cookieName: LY_TOKEN # cookie的名称
   filter:
     allowPaths:
@@ -47,6 +60,14 @@ leyou:
       - /api/user/check
       - /api/user/code
       - /api/item
+      - /api/service-api
+      - /api/swagger-ui.html
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api/api-doc
+
 
 logging:
   level:
